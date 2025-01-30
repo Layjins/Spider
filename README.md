@@ -31,12 +31,18 @@ Spider :
 <VIDEO> Dragon Dance [VIDEO0] </VIDEO>: The dragon dance is...
 
 <p align="center">
-  <video src="doc/video/Dragon Dance.mp4" width="100%"/></a>
+  <video width="100%" controls>
+    <source src="doc/video/Dragon Dance.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </p>
 
 <AUDIO> Peking Opera [AUDIO0] </AUDIO>:  A traditional opera...
 
 <p align="center">
-  <audio src="doc/audio/Peking Opera.mp4" width="100%"/></a>
+  <audio controls>
+    <source src="doc/audio/Peking Opera.mp4" type="audio/mp4">
+    Your browser does not support the audio element.
+  </audio>
 </p>
 
