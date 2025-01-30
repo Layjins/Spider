@@ -28,7 +28,7 @@ Spider :
 
 3. Cultures
 
-<VIDEO> Dragon Dance [VIDEO0] </VIDEO>: The dragon dance is...
+\<VIDEO\> Dragon Dance [VIDEO0] \</VIDEO\>: The dragon dance is...
 
 <p align="center">
   <video width="100%" controls>
@@ -37,7 +37,7 @@ Spider :
   </video>
 </p>
 
-<AUDIO> Peking Opera [AUDIO0] </AUDIO>:  A traditional opera...
+\<AUDIO\> Peking Opera [AUDIO0] \</AUDIO\>:  A traditional opera...
 
 <p align="center">
   <audio controls>
