@@ -16,13 +16,13 @@ Spider :
 \<IMAGE\> The Great Wall [IMAGE0] \</IMAGE\>: An iconic landmarks...
 
 <p align="center">
-  <img src="doc/image/The Great Wall.png" width="100%"/></a>
+  <img src="doc/image/The Great Wall.png" width="50%"/></a>
 </p>
 
 \<IMAGE\> The Forbidden City [IMAGE0] \</IMAGE\>: A vast palace...
 
 <p align="center">
-  <img src="doc/image/The Forbidden City.png" width="100%"/></a>
+  <img src="doc/image/The Forbidden City.png" width="50%"/></a>
 </p>
 
 
@@ -31,7 +31,7 @@ Spider :
 \<VIDEO\> Dragon Dance [VIDEO0] \</VIDEO\>: The dragon dance is...
 
 <p align="center">
-  <video width="100%" controls>
+  <video width="50%" controls>
     <source src="doc/video/Dragon Dance.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
