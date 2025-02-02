@@ -4,13 +4,13 @@
 
 ## Many-modal Travel Guide: Beijing
 
-##### User: 
+#### User: 
 
 Please provide me a travel guide for Beijing.
 
 ------------------------------------------------------------------------------------------
 
-##### Spider: 
+#### Spider: 
 
 1. Introduction: Beijing, the capital of China, is a city rich in history and culture. It offers a blend of ancient and modern attractions.
 
@@ -52,13 +52,13 @@ Please provide me a travel guide for Beijing.
 
 ## Many-modal Travel Guide: Guangzhou
 
-##### User: 
+#### User: 
 
 Please provide a travel guide for Guangzhou.
 
 ------------------------------------------------------------------------------------------
 
-##### Spider: 
+#### Spider: 
 
 1. Introduction: Guangzhou, is a major city in southern China renowned for its vibrant trade, rich history, and culinary delights.
 
@@ -87,7 +87,7 @@ Please provide a travel guide for Guangzhou.
   </video>
 </p>
 
-- <AUDIO>Guangzhou Opera House[AUDIO0]</AUDIO>: Watch an impressive opera performance in one of the most modern venues in China.
+- \<AUDIO\>Guangzhou Opera House[AUDIO0]\</AUDIO\>: Watch an impressive opera performance in one of the most modern venues in China.
 
 <p align="center">
   <audio controls>
