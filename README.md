@@ -2,6 +2,8 @@
 - The generated images, audios, and videos are placed in /doc
 - We will update the content in a few days, and sorry for the late due to the Chinese New Year.
 
+
+
 ## Many-modal Travel Guide: Beijing
 
 #### User: 
@@ -48,6 +50,7 @@ Please provide me a travel guide for Beijing.
     Your browser does not support the audio element.
   </audio>
 </p>
+
 
 
 ## Many-modal Travel Guide: Guangzhou
@@ -134,4 +137,230 @@ Please provide a travel guide for Guangzhou.
 
 Explore the dynamic culture and culinary delights of Guangzhou!
 
+
+
+## Many-modal Travel Guide: Tokyo
+
+#### User: 
+
+Please provide a travel guide for Tokyo.
+
+------------------------------------------------------------------------------------------
+
+#### Spider: 
+
+1. Introduction: Tokyo, the capital of Japan, is a bustling metropolis that blends traditional culture with modern innovation.
+
+2. Attractions
+
+- \<IMAGE\>Tokyo Tower[IMAGE0]\</IMAGE\>: An iconic symbol of Tokyo with observation decks offering stunning views.
+
+<p align="center">
+  <img src="doc/image/Tokyo Tower.png" width="50%"/></a>
+</p>
+
+- \<IMAGE\>Shibuya Crossing[IMAGE0]\</IMAGE\>: One of the busiest pedestrian crossings in the world.
+
+<p align="center">
+  <img src="doc/image/Shibuya Crossing.png" width="50%"/></a>
+</p>
+
+- \<IMAGE\>Senso-ji Temple[IMAGE0]\</IMAGE\>: Tokyo's oldest temple, located in Asakusa.
+
+<p align="center">
+  <img src="doc/image/Senso-ji Temple.png" width="50%"/></a>
+</p>
+
+3. Cultural Experiences
+
+- \<VIDEO\>Sumo Wrestling[VIDEO0]\</VIDEO\>: Experience a traditional Japanese sport.
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/video/Sumo Wrestling.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+- \<VIDEO\>Tea Ceremony[VIDEO0]\</VIDEO\>: Participate in a traditional Japanese tea ceremony.
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/video/Tea Ceremony.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+4. Tokyo Food and Dining
+
+- \<IMAGE\>Sushi[IMAGE0]\</IMAGE\>: Enjoy world-famous sushi at local restaurants.
+
+<p align="center">
+  <img src="doc/image/Sushi.png" width="50%"/></a>
+</p>
+
+- \<IMAGE\>Ramen[IMAGE0]\</IMAGE\>: A popular Japanese noodle soup available in various styles.
+
+<p align="center">
+  <img src="doc/image/Ramen.png" width="50%"/></a>
+</p>
+
+- \<IMAGE\>Tempura[IMAGE0]\</IMAGE\>: Lightly battered and fried seafood or vegetables.
+
+<p align="center">
+  <img src="doc/image/Tempura.png" width="50%"/></a>
+</p>
+
+5. Tokyo Shopping
+
+- Ginza: A luxury shopping district with high-end brands.
+
+- Harajuku: Known for its unique street fashion and shops.
+
+- Akihabara: A haven for electronics and anime culture.
+
+- Shinjuku: A bustling area with shops, restaurants, and entertainment.
+
+6. Tokyo Transportation
+
+- Subway: The Tokyo subway system is efficient and easy to navigate.
+
+- Buses: Public buses cover most areas of the city.
+
+- Taxis: Taxis are available but can be expensive.
+
+7. Tokyo Tips
+
+- Best Time to Visit: Spring (March to May) for cherry blossoms and Autumn (September to November) for pleasant weather.
+
+- Language: Learning a few basic Japanese phrases can be helpful.
+
+- Currency: The local currency is the Japanese Yen (JPY).
+
+Enjoy your trip to Tokyo!
+
+
+
+## Text + Image → Text + Image + Video
+
+#### User: 
+
+Generate an image and a video that are similar to this image.
+
+<p align="center">
+  <img src="doc/image/A snowy mountain with a blue sky 1.png" width="50%"/></a>
+</p>
+
+-----------------------------------------------------------------------
+
+#### Spider:
+
+A snowy mountain with a blue sky.
+\<IMAGE\> A snowy mountain with a blue sky [IMAGE0] \</IMAGE\>
+
+<p align="center">
+  <img src="doc/image/A snowy mountain with a blue sky 2.png" width="50%"/></a>
+</p>
+
+\<VIDEO\> A snowy mountain with a blue sky [VIDEO0] \</VIDEO\>
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/video/A snowy mountain with a blue sky.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+
+
+## Text + Image → Box + Image + Video
+
+#### User: 
+
+Detect tiger, and generate an image and a video for it
+
+<p align="center">
+  <img src="doc/image/tiger.png" width="50%"/></a>
+</p>
+
+-----------------------------------------------------------------------
+#### Spider:
+
+\<BOX\> Tiger [BOX0] \</BOX\>
+
+<p align="center">
+  <img src="doc/image/tiger_box.png" width="50%"/></a>
+</p>
+
+\<IMAGE\> Tiger [IMAGE0] \</IMAGE\>
+
+<p align="center">
+  <img src="doc/image/tiger_gen.png" width="50%"/></a>
+</p>
+
+\<VIDEO\> Tiger [VIDEO0] \</VIDEO\>
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/video/tiger.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+
+
+## Text + Image → Mask + Image
+
+#### User: 
+
+Give me the mask of panda, and generate an image for it
+
+<p align="center">
+  <img src="doc/image/panda.png" width="50%"/></a>
+</p>
+
+--------------------------------------------------------------------------------   
+
+#### Spider: 
+
+\<MASK\> Panda [MASK0] \</MASK\>
+
+<p align="center">
+  <img src="doc/image/panda_mask.png" width="50%"/></a>
+</p>
+
+\<IMAGE\> Panda [IMAGE0] \</IMAGE\>
+
+<p align="center">
+  <img src="doc/image/panda_gen.png" width="50%"/></a>
+</p>
+
+
+
+## Text → Text + Image + Video
+
+#### User: 
+
+Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room.
+
+-------------------------------------------------------------------------
+ 
+#### Spider:
+
+A cat chasing a ball of yarn in a living room.
+
+\<IMAGE\> A cat chasing a ball of yarn in a living room [IMAGE0] \</IMAGE\>
+
+<p align="center">
+  <img src="doc/image/A cat chasing a ball of yarn in a living room.png" width="50%"/></a>
+</p>
+
+\<VIDEO\> A cat chasing a ball of yarn in a living room [VIDEO0] \</VIDEO\>
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
 
