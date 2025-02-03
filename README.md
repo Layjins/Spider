@@ -52,6 +52,14 @@ Please provide me a travel guide for Beijing.
 </p>
 
 
+#### NExT-GPT: 
+
+Beijing is the capital and largest city of China, and one of the most popular tourist destinations in the world. Here are some tips and tricks to help you make the most of your trip to Beijing:
+
+- Get a visa: Before you leave, make sure you have a Beijing visa, which is usually good for 3 months. You can apply for a visa online or at a Beijing consulate.
+- Get your accommodation lined up: Beijing has a wide range of accommodation options, from luxury hotels to budget-friendly options. You can book a hotel online or through a local agency.
+- Explore the food: Beijing is known for its delicious food, and there are plenty of places to try. From traditional Chinese cuisine to modern international dishes, there is something for everyone.
+- Take a day trip to the Great Wall of Beijing: The Great Wall of Beijing is one of the most famous landmarks in the world, and it's a must-see.
 
 ## Many-modal Travel Guide: Guangzhou
 
@@ -137,6 +145,14 @@ Please provide a travel guide for Guangzhou.
 
 Explore the dynamic culture and culinary delights of Guangzhou!
 
+
+#### NExT-GPT: 
+
+- Get ready to immerse yourself in the vibrant energy of Guangzhou, China's major city. This bustling metropolis is a harmonious blend of modernity and tradition, offering a diverse range of activities and experiences. Here's your essential travel guide to help you make the most of your time in this dynamic city.
+
+- Get ready to explore the rich history of this ancient city. The most popular tourist attractions in Guangzhou include the crisp air of the Fei metal smelting plant, the towering beauty of the Cividance grandeur, and the iconic beauty of the masterpiece of the essence of the city.
+
+- For those who are interested in local culture, the best way to experience it is by visiting the bustling streets of the city. You can explore the bustling marketplaces, witness the traditional crafts of the region, and try some local delicacies.
 
 
 ## Many-modal Travel Guide: Tokyo
@@ -239,6 +255,15 @@ Please provide a travel guide for Tokyo.
 
 Enjoy your trip to Tokyo!
 
+
+#### NExT-GPT: 
+
+Tokyo is a bustling city filled with history, culture, and excitement. Here are some tips and tricks to help you make the most of your trip to this vibrant and dynamic city.
+
+- Get a S created by your airline or travel insurance company. This will help you avoid any delays or cancellations, and also provide you with information about your flight, baggage, and other travel-related services.
+- Make sure you have enough time to see everything you want to see. Tokyo is a city that offers something for everyone, from history and culture to modern technology and entertainment. Make sure you plan your itinerary carefully, and don't forget to leave some time for relaxation and exploration.
+- Get a reputable guide book or app. There are many guide books available for Tokyo, and many of them are available in multiple languages. These can help you navigate the city, find the best places to eat, and learn about its history and culture.
+- Be prepared for the weather. Tokyo can be hot and humid, so make sure you have enough clothing to stay comfortable. 
 
 
 ## Text + Image → Text + Image + Video
