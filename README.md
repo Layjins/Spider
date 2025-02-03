@@ -62,6 +62,14 @@ Beijing is the capital and largest city of China, and one of the most popular to
 - Explore the food: Beijing is known for its delicious food, and there are plenty of places to try. From traditional Chinese cuisine to modern international dishes, there is something for everyone.
 - Take a day trip to the Great Wall of Beijing: The Great Wall of Beijing is one of the most famous landmarks in the world, and it's a must-see.
 
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+Spider generated a many-modal travel guide. But NExT-GPT only generated a textual travel guide.
+
+
+
 ## Many-modal Travel Guide: Guangzhou
 
 #### User: 
@@ -155,6 +163,12 @@ Explore the dynamic culture and culinary delights of Guangzhou!
 - Get ready to explore the rich history of this ancient city. The most popular tourist attractions in Guangzhou include the crisp air of the Fei metal smelting plant, the towering beauty of the Cividance grandeur, and the iconic beauty of the masterpiece of the essence of the city.
 
 - For those who are interested in local culture, the best way to experience it is by visiting the bustling streets of the city. You can explore the bustling marketplaces, witness the traditional crafts of the region, and try some local delicacies.
+
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+Spider generated a many-modal travel guide. But NExT-GPT only generated a textual travel guide.
 
 
 ## Many-modal Travel Guide: Tokyo
@@ -268,6 +282,13 @@ Tokyo is a bustling city filled with history, culture, and excitement. Here are 
 - Get a reputable guide book or app. There are many guide books available for Tokyo, and many of them are available in multiple languages. These can help you navigate the city, find the best places to eat, and learn about its history and culture.
 - Be prepared for the weather. Tokyo can be hot and humid, so make sure you have enough clothing to stay comfortable. 
 
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+Spider generated a many-modal travel guide. But NExT-GPT only generated a textual travel guide.
+
+
 
 ## Text + Image → Text + Image + Video
 
@@ -300,6 +321,20 @@ A snowy mountain with a blue sky.
 </p>
 
 
+-----------------------------------------------------------------------
+
+#### NExT-GPT: 
+
+<p align="center">
+  <img src="doc/NextGPT/image/mountain.png" width="50%"/></a>
+</p>
+
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+User prompt is "Generate an image and a video that are similar to this image."
+Spider generated an image and a video according to the user prompt. But NExT-GPT only generated an image, failed to generate the video.
 
 ## Text + Image → Box + Image + Video
 
