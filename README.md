@@ -51,6 +51,7 @@ Please provide me a travel guide for Beijing.
   </audio>
 </p>
 
+-----------------------------------------------------------------------
 
 #### NExT-GPT: 
 
@@ -145,6 +146,7 @@ Please provide a travel guide for Guangzhou.
 
 Explore the dynamic culture and culinary delights of Guangzhou!
 
+-----------------------------------------------------------------------
 
 #### NExT-GPT: 
 
@@ -255,6 +257,7 @@ Please provide a travel guide for Tokyo.
 
 Enjoy your trip to Tokyo!
 
+-----------------------------------------------------------------------
 
 #### NExT-GPT: 
 
