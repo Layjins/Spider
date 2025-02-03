@@ -367,6 +367,21 @@ Detect tiger, and generate an image and a video for it
   </video>
 </p>
 
+-----------------------------------------------------------------------
+
+#### NExT-GPT: 
+
+<p align="center">
+  <img src="doc/NextGPT/image/tiger.png" width="50%"/></a>
+</p>
+
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+User prompt is "Detect tiger, and generate an image and a video for it".
+Spider detected the tiger in the input image, and generated an image and a video according to the user prompt. But NExT-GPT only generated an image, failed to generate the video and detect the tiger in the input image.
+
 
 
 ## Text + Image → Mask + Image
@@ -394,6 +409,21 @@ Give me the mask of panda, and generate an image for it
 <p align="center">
   <img src="doc/image/panda_gen.png" width="50%"/></a>
 </p>
+
+-----------------------------------------------------------------------
+
+#### NExT-GPT: 
+
+<p align="center">
+  <img src="doc/NextGPT/image/panda.png" width="50%"/></a>
+</p>
+
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+User prompt is "Give me the mask of panda, and generate an image for it".
+Spider generated the mask for the panda in the input image, and generated an image according to the user prompt. But NExT-GPT only generated an image, failed to generate the mask for the panda in the input image.
 
 
 
@@ -424,3 +454,20 @@ A cat chasing a ball of yarn in a living room.
   </video>
 </p>
 
+-----------------------------------------------------------------------
+
+#### NExT-GPT: 
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/NextGPT/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+User prompt is "Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room."
+Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video, failed to generate the image.
