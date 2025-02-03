@@ -1,7 +1,4 @@
 # Spider
-- The generated images, audios, and videos are placed in /doc
-- We will update the content in a few days, and sorry for the late due to the Chinese New Year.
-
 
 
 ## Many-modal Travel Guide: Beijing
