@@ -286,6 +286,50 @@ Tokyo is a bustling city filled with history, culture, and excitement. Here are 
 Spider generated a many-modal travel guide. But NExT-GPT only generated a textual travel guide.
 
 
+## Text + Image → Text + Image
+
+#### User: 
+
+Show me an image that is similar to this image.
+
+<p align="center">
+  <img src="doc/image/mushroom.png" width="50%"/></a>
+</p>
+
+-----------------------------------------------------------------------
+
+#### Spider:
+
+A mystical forest with glowing mushrooms and a hidden waterfall.
+\<IMAGE\> A mystical forest with glowing mushrooms and a hidden waterfall [IMAGE0] \</IMAGE\>
+
+<p align="center">
+  <img src="doc/image/A mystical forest with glowing mushrooms and a hidden waterfall.png" width="50%"/></a>
+</p>
+
+
+-----------------------------------------------------------------------
+
+#### NExT-GPT: 
+
+Certainly! Here's an image that captures the essence of the scene you described, with a group of mushrooms growing amidst a lush forest, creating a captivating and enchanting atmosphere.
+
+<p align="center">
+  <img src="doc/NextGPT/image/mushroom.png" width="50%"/></a>
+</p>
+
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+<p align="center">
+  <img src="doc/image/compare.png" width="100%"/></a>
+</p>
+
+User prompt is "Show me an image that is similar to this image".
+Spider generated the image that is more similar to the input image, comparing to NExT-GPT.
+
+
 
 ## Text + Image → Text + Image + Video
 
@@ -294,7 +338,7 @@ Spider generated a many-modal travel guide. But NExT-GPT only generated a textua
 Generate an image and a video that are similar to this image.
 
 <p align="center">
-  <img src="doc/image/A snowy mountain with a blue sky 1.png" width="50%"/></a>
+  <img src="doc/image/mountain.png" width="50%"/></a>
 </p>
 
 -----------------------------------------------------------------------
@@ -305,7 +349,7 @@ A snowy mountain with a blue sky.
 \<IMAGE\> A snowy mountain with a blue sky [IMAGE0] \</IMAGE\>
 
 <p align="center">
-  <img src="doc/image/A snowy mountain with a blue sky 2.png" width="50%"/></a>
+  <img src="doc/image/A snowy mountain with a blue sky.png" width="50%"/></a>
 </p>
 
 \<VIDEO\> A snowy mountain with a blue sky [VIDEO0] \</VIDEO\>
@@ -334,6 +378,57 @@ Certainly! I can help you with that. Here's an image that is quite similar to th
 
 User prompt is "Generate an image and a video that are similar to this image."
 Spider generated an image and a video according to the user prompt. But NExT-GPT only generated an image, failed to generate the video.
+
+
+
+## Text → Text + Image + Video
+
+#### User: 
+
+Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room.
+
+-------------------------------------------------------------------------
+ 
+#### Spider:
+
+A cat chasing a ball of yarn in a living room.
+
+\<IMAGE\> A cat chasing a ball of yarn in a living room [IMAGE0] \</IMAGE\>
+
+<p align="center">
+  <img src="doc/image/A cat chasing a ball of yarn in a living room.png" width="50%"/></a>
+</p>
+
+\<VIDEO\> A cat chasing a ball of yarn in a living room [VIDEO0] \</VIDEO\>
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+-----------------------------------------------------------------------
+
+#### NExT-GPT: 
+
+Certainly! I have just the video you're looking for. It captures the delightful moment of a cat p chasing a ball of yarn in a cozy living room. You'll be captivated by the cat's playful nature and the whimsical way it interacts with the colorful yarn.
+
+<p align="center">
+  <video width="50%" controls>
+    <source src="doc/NextGPT/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+-----------------------------------------------------------------------
+
+##### Discussion: 
+
+User prompt is "Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room."
+Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video, failed to generate the image.
+
+
 
 ## Text + Image → Box + Image + Video
 
@@ -431,51 +526,3 @@ Certainly! I can provide you with an image that captures the essence of the pand
 User prompt is "Give me the mask of panda, and generate an image for it".
 Spider generated the mask for the panda in the input image, and generated an image according to the user prompt. But NExT-GPT only generated an image, failed to generate the mask for the panda in the input image.
 
-
-
-## Text → Text + Image + Video
-
-#### User: 
-
-Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room.
-
--------------------------------------------------------------------------
- 
-#### Spider:
-
-A cat chasing a ball of yarn in a living room.
-
-\<IMAGE\> A cat chasing a ball of yarn in a living room [IMAGE0] \</IMAGE\>
-
-<p align="center">
-  <img src="doc/image/A cat chasing a ball of yarn in a living room.png" width="50%"/></a>
-</p>
-
-\<VIDEO\> A cat chasing a ball of yarn in a living room [VIDEO0] \</VIDEO\>
-
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
-
------------------------------------------------------------------------
-
-#### NExT-GPT: 
-
-Certainly! I have just the video you're looking for. It captures the delightful moment of a cat p chasing a ball of yarn in a cozy living room. You'll be captivated by the cat's playful nature and the whimsical way it interacts with the colorful yarn.
-
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/NextGPT/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
-
------------------------------------------------------------------------
-
-##### Discussion: 
-
-User prompt is "Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room."
-Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video, failed to generate the image.
