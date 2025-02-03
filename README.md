@@ -322,7 +322,7 @@ A snowy mountain with a blue sky.
 
 #### NExT-GPT: 
 
-Certainly! Here's an image of a majestic mountain with a serene blue sky as its backdrop. You can also find a video capturing the beauty of this scene.
+Certainly! I can help you with that. Here's an image that is quite similar to the one you described. It showcases a snowy mountain with a large, majestic peak in the distance. The snowy landscape creates a serene and picturesque scene. I'm sure you'll find it visually appealing.
 
 <p align="center">
   <img src="doc/NextGPT/image/mountain.png" width="50%"/></a>
@@ -373,6 +373,8 @@ Detect tiger, and generate an image and a video for it
 
 #### NExT-GPT: 
 
+Sure! Here's an image of a majestic tiger standing proudly, showcasing its powerful presence. You can also find a video of a tiger in action, as well as a box. Enjoy!
+
 <p align="center">
   <img src="doc/NextGPT/image/tiger.png" width="50%"/></a>
 </p>
@@ -415,6 +417,8 @@ Give me the mask of panda, and generate an image for it
 -----------------------------------------------------------------------
 
 #### NExT-GPT: 
+
+Certainly! I can provide you with an image that captures the essence of the panda in this scene. It's a delightful image of a black and white tiger bear, standing gracefully on a grassy hillside. The bear's black and white fur contrasts beautifully against the green grass, creating a striking visual. The panda appears to be peacefully strolling through the grass, enjoying its surroundings. It's a serene and captivating sight!
 
 <p align="center">
   <img src="doc/NextGPT/image/panda.png" width="50%"/></a>
