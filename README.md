@@ -464,6 +464,8 @@ A cat chasing a ball of yarn in a living room.
 
 #### NExT-GPT: 
 
+Certainly! I have just the video you're looking for. It captures the delightful moment of a cat p chasing a ball of yarn in a cozy living room. You'll be captivated by the cat's playful nature and the whimsical way it interacts with the colorful yarn.
+
 <p align="center">
   <video width="50%" controls>
     <source src="doc/NextGPT/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
@@ -476,4 +478,4 @@ A cat chasing a ball of yarn in a living room.
 ##### Discussion: 
 
 User prompt is "Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room."
-Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video, failed to generate the image.
+Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video (besides, the content of the generated video is not consistent with the user test prompt), failed to generate the image.
