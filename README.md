@@ -322,6 +322,8 @@ A snowy mountain with a blue sky.
 
 #### NExT-GPT: 
 
+Certainly! Here's an image of a majestic mountain with a serene blue sky as its backdrop. You can also find a video capturing the beauty of this scene.
+
 <p align="center">
   <img src="doc/NextGPT/image/mountain.png" width="50%"/></a>
 </p>
