@@ -478,4 +478,4 @@ Certainly! I have just the video you're looking for. It captures the delightful 
 ##### Discussion: 
 
 User prompt is "Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room."
-Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video (besides, the content of the generated video is not consistent with the user test prompt), failed to generate the image.
+Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video, failed to generate the image.
