@@ -1,5 +1,6 @@
 # Spider
 
+The code will be made public before 2025.5.30.
 
 ## Many-modal Travel Guide: Beijing
 
