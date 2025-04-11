@@ -1,3 +1,61 @@
+# Highlight
+
+The [Inference](#inference) section provides various inference demos for multimodal generation using different model architectures. Key capabilities include:
+
+- **Any-to-Many Generation**: Support for cross-modal inputs and outputs (text, image, audio, video, box, mask)  
+- **Specialized Story Generation**: Convert multimodal inputs into coherent text-image story  
+- **Model Variants**: Implementations using both Qwen2.5-Omni and DeepSeek-Llama architectures
+
+### Supported Features
+✅ Gradio web interfaces  
+✅ Python API calls  
+✅ Autodl cloud deployment  
+
+> **Quick Start Tip**: We recommend starting with [SpiderFree (Qwen2.5-Omni)](#SpiderFree-Qwen) for quick experimentation with multimodal generation capabilities.
+
+
+# Table of Contents
+
+- [Highlight](#highlight)
+    - [Supported Features](#supported-features)
+- [Table of Contents](#table-of-contents)
+- [Quick start](#quick-start)
+  - [Inference](#inference)
+      - [1. SpiderFree (Qwen2.5-Omni)](#1-spiderfree-qwen25-omni)
+      - [2. SpiderStory free (Qwen2.5-Omni)](#2-spiderstory-free-qwen25-omni)
+      - [3. SpiderStory free (DeepSeek-R1-Distill-Llama-8B)](#3-spiderstory-free-deepseek-r1-distill-llama-8b)
+- [Environment setting](#environment-setting)
+  - [Spider+Llama3+Qwen+Story Environment](#spiderllama3qwenstory-environment)
+      - [Qwen Environment setting](#qwen-environment-setting)
+      - [modify deepspeed:](#modify-deepspeed)
+      - [mmdet Environment](#mmdet-environment)
+- [Train](#train)
+  - [Train of Spider](#train-of-spider)
+- [Inference](#inference-1)
+  - [Inference Demo of Spider](#inference-demo-of-spider)
+      - [Spider](#spider)
+      - [SpiderStory](#spiderstory)
+  - [Inference Demo of SpiderFree](#inference-demo-of-spiderfree)
+      - [SpiderStory free (DeepSeek-R1-Distill-Llama-8B)](#spiderstory-free-deepseek-r1-distill-llama-8b)
+      - [SpiderStory free (Qwen2.5-Omni)](#spiderstory-free-qwen25-omni)
+      - [SpiderFree (Qwen2.5-Omni)](#spiderfree-qwen25-omni)
+  - [Inference Demo of DeepSeek-R1-Distill-Llama-8B](#inference-demo-of-deepseek-r1-distill-llama-8b)
+  - [Inference Demo of StoryDiffusion](#inference-demo-of-storydiffusion)
+  - [Inference Demo of SpiderDecoder](#inference-demo-of-spiderdecoder)
+  - [Inference Demo of Qwen2.5-Omni](#inference-demo-of-qwen25-omni)
+  - [Inference Demo of NextGPT](#inference-demo-of-nextgpt)
+- [Code](#code)
+  - [Code Structure](#code-structure)
+  - [Code Base](#code-base)
+      - [Code Base - Spider](#code-base---spider)
+      - [Code Base - Story](#code-base---story)
+- [Dataset](#dataset)
+  - [Dataset - Spider](#dataset---spider)
+  - [Dataset - Story](#dataset---story)
+- [Citation](#citation)
+- [Contact](#contact)
+
+
 # Quick start
 ## [Inference](#Inference)
 Includes many models. Some models are recommended as below:
@@ -213,6 +271,8 @@ cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
 sh demo.sh
 ```
 
+
+## Inference Demo of SpiderFree
 #### SpiderStory free (DeepSeek-R1-Distill-Llama-8B)
 <a id="Spider-Story-Free-Llama3"></a>
 docker in autodl: spider_qwen
@@ -244,7 +304,7 @@ python3 qwen2.5omni_spider_web.py
 <a id="SpiderFree-Qwen"></a>
 docker in autodl: spider_qwen
 
-Config: Spider/train_configs/spider_decoder_cfg.py
+Config: Spider/train_configs/spider_decoder_cfg.py (Note: We are still working on designing a better system prompt to let Qwen2.5-Omni output a better formated text.)
 
 Inference Pipeline: Spider/spider_decoder_infer.py
 
