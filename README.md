@@ -14,10 +14,22 @@ The [Inference](#inference) section provides various inference demos for multimo
 > **Quick Start Tip**: We recommend starting with [SpiderFree (Qwen2.5-Omni)](#SpiderFree-Qwen) for quick experimentation with multimodal generation capabilities.
 
 
+### Our Paper
+Spider: Any-to-Many Multimodal LLM: https://arxiv.org/pdf/2411.09439
+```bibtex
+@article{lai2024spider,
+  title={Spider: Any-to-Many Multimodal LLM},
+  author={Lai, Jinxiang and Zhang, Jie and Liu, Jun and Li, Jian and Lu, Xiaocheng and Guo, Song},
+  journal={arXiv preprint arXiv:2411.09439},
+  year={2024}
+}
+```
+
 # Table of Contents
 
 - [Highlight](#highlight)
     - [Supported Features](#supported-features)
+    - [Our Paper](#our-paper)
 - [Table of Contents](#table-of-contents)
 - [Quick start](#quick-start)
   - [Inference](#inference)
