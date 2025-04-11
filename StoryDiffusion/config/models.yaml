@@ -1,0 +1,19 @@
+Juggernaut: 
+  path: "/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors"
+  single_files: true   ### if true, is a civitai model
+  use_safetensors: true
+
+RealVision:
+  path: "/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/RealVisXL_V4.0"
+  single_files: false
+  use_safetensors: true
+
+SDXL:
+  path: "/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/stable-diffusion-xl-base-1.0"
+  single_files: false
+  use_safetensors: true
+
+Unstable:
+  path: "/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/sdxl-unstable-diffusers-y"
+  single_files: false
+  use_safetensors: false

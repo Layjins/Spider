@@ -1,0 +1,6 @@
+datasets:
+  flickr_CaptionToPhrase:
+    data_type: images
+    build_info:
+      image_path: /youtu_fuxi-team2-1/Public_Dataset/Filtered_Flickr-30K/flickr30k_images
+      ann_path: /youtu_fuxi-team2-1/Public_Dataset/Filtered_Flickr-30K/captiontobbox.json

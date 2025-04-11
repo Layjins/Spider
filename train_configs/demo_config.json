@@ -1,0 +1,5 @@
+{
+    "type": "ds_model",
+    "version": 0.0,
+    "checkpoints": ["/root/autodl-tmp/exp/spider/story/2025032900165/0/mp_rank_00_model_states.pt"]
+}

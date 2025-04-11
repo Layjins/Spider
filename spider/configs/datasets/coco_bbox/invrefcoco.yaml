@@ -1,0 +1,8 @@
+datasets:
+  invrefcoco:
+    data_type: images
+    build_info:
+      image_path: /youtu_fuxi-team2-1/Public_Dataset/COCO2014/train2014
+      ann_path: /youtu_fuxi-team2-1/Public_Dataset/Referring_Expression
+      dataset: invrefcoco
+      splitBy: unc

@@ -1,529 +1,401 @@
-# Spider
+# Quick start
+## [Inference](#Inference)
+Includes many models. Some models are recommended as below:
+
+#### 1. [SpiderFree (Qwen2.5-Omni)](#SpiderFree-Qwen)
+Any-to-Many modalities generation. The generated examples are shown in [visual.md](./visual.md)
+
+#### 2. [SpiderStory free (Qwen2.5-Omni)](#Spider-Story-Free-Qwen)
+Any modalities to text-image story generation.
+
+#### 3. [SpiderStory free (DeepSeek-R1-Distill-Llama-8B)](#Spider-Story-Free-Llama3)
+Text to text-image story generation.
+
+
+
+# Environment setting
+(If you need the docker in autodl, please provide your autodl-ID for docker-sharing, and contact Jinxiang Lai: layjins1994@gmail.com)
+
+## Spider+Llama3+Qwen+Story Environment
+<a id="QwenEnvironment"></a>
+base docker: PyTorch 2.1.0, Python 3.10(ubuntu22.04), CUDA 12.1
+
+docker: spider_qwen
+
+```shell
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+pip3 install -r requirements_spider_llama3.txt
+```
+
+#### Qwen Environment setting
+```shell
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+pip3 install -r requirements_spider_qwen.txt
+```
+
+1. install transformer with Qwen: https://github.com/QwenLM/Qwen2.5-Omni
+
+or offline install transformer with Qwen: 
+```shell
+# pip3 uninstall transformers
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/transformers/dist
+pip3 install transformers-4.50.0.dev0.tar.gz
+# pip3 install accelerate
+pip3 install qwen-omni-utils[decord]
+sudo apt update && sudo apt install ffmpeg -y
+```
+
+2. Alternative: Flash-Attention 2 to speed up generation. manually download: https://github.com/Dao-AILab/flash-attention/releases
+```shell
+# pip3 install -U flash-attn --no-build-isolation
+# pip3 install flash-attn==2.7.3 --no-build-isolation
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model
+pip3 install flash_attn-2.5.8+cu122torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+```
+
+3. If Error when do story generation.
+```shell
+File "/root/miniconda3/lib/python3.10/site-packages/diffusers/utils/dynamic_modules_utils.py", line 28, in <module>
+    from huggingface_hub import cached_download, hf_hub_download, model_info
+ImportError: cannot import name 'cached_download' from 'huggingface_hub' (/root/miniconda3/envs/qwen/lib/python3.10/site-packages/huggingface_hub/__init__.py)
+```
+
+remove cached_download
+```shell
+vim /root/miniconda3/lib/python3.10/site-packages/diffusers/utils/dynamic_modules_utils.py
+# from huggingface_hub import cached_download, hf_hub_download, model_info
+from huggingface_hub import hf_hub_download, model_info # remove cached_download
+```
 
-The code will be made public before 2025.4.30.
+4. Error:
+```shell
+File "/root/miniconda3/lib/python3.10/site-packages/pytorchvideo/transforms/augmentations.py", line 9, in <module>
+    import torchvision.transforms.functional.to_tensor as F_t
+ModuleNotFoundError: No module named 'torchvision.transforms.functional.to_tensor'
+```
 
-## Many-modal Travel Guide: Beijing
+Fix:
+```shell
+vim /root/miniconda3/lib/python3.10/site-packages/pytorchvideo/transforms/augmentations.py
+# import torchvision.transforms.functional.to_tensor as F_t
+import torchvision.transforms.functional as F_t
+```
 
-#### User: 
+5. Fix:
+```shell
+vim /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider/spider/runners/runner_base.py
+#from transformers.deepspeed import is_deepspeed_zero3_enabled
+from transformers.integrations.deepspeed import is_deepspeed_zero3_enabled
+```
 
-Please provide me a travel guide for Beijing.
+#### modify deepspeed:
 
-------------------------------------------------------------------------------------------
+1. pip3 install --upgrade deepspeed==0.16.5
 
-#### Spider: 
+2. In python3 environment，find the path of the installed deepspeed：
+import deepspeed
+print(deepspeed)
+<module 'deepspeed' from '/root/miniconda3/lib/python3.10/site-packages/deepspeed/__init__.py'>
 
-1. Introduction: Beijing, the capital of China, is a city rich in history and culture. It offers a blend of ancient and modern attractions.
+3. Replace the installed deepspeed with the corresponding files in /myGPT/myDeepSpeed0.16.5：
 
-2. Attractions
+deepspeed/inference/engine.py
 
-- \<IMAGE\> The Great Wall [IMAGE0] \</IMAGE\>: One of the most iconic landmarks in the world.
+deepspeed/module_inject/load_checkpoint.py
 
-<p align="center">
-  <img src="doc/image/The Great Wall.png" width="50%"/></a>
-</p>
+4. In Spider/demo/inference_api.py
+load_ckpt_mode = 'manul'
 
-- \<IMAGE\> The Forbidden City [IMAGE0] \</IMAGE\>: A vast palace complex that served as the home of emperors for centuries.
 
-<p align="center">
-  <img src="doc/image/The Forbidden City.png" width="50%"/></a>
-</p>
+#### mmdet Environment
+mmcv:
+```shell
+pip3 install -U openmim
+mim install mmengine
+# mim install mmcv==2.1.0
+pip install mmcv==2.2.0 -f https://download.openmmlab.com/mmcv/dist/cu121/torch2.2/index.html
+# https://mmcv.readthedocs.io/zh-cn/latest/get_started/installation.html
+```
 
+mmdet
+```shell
+mim install mmdet
+```
 
-3. Cultures
+error: AssertionError: MMCV==2.2.0 is used but incompatible. Please install mmcv>=1.7.2, <2.2.0
+```shell
+vim /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider/spider/models/mmdetection/mmdet/__init__.py
+mmcv_maximum_version = '2.2.1'
+vim /root/miniconda3/lib/python3.10/site-packages/mmdet/__init__.py
+mmcv_maximum_version = '2.2.1'
+```
 
-- \<VIDEO\> Dragon Dance [VIDEO0] \</VIDEO\>: The dragon dance is performed by a team of dancers who manipulate a long flexible dragon puppet using poles.
 
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/Dragon Dance.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
+nltk_data for grounding DINO: https://blog.csdn.net/qq_43140627/article/details/103895811
+```shell
+mv /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/nltk_data.zip /root
+cd /root
+unzip nltk_data.zip
+```
 
-- \<AUDIO\> Peking Opera [AUDIO0] \</AUDIO\>:  Enjoy a traditional Chinese opera performance.
 
-<p align="center">
-  <audio controls>
-    <source src="doc/audio/Peking Opera.mp4" type="audio/mp4">
-    Your browser does not support the audio element.
-  </audio>
-</p>
+# Train
+## Train of Spider
+docker in autodl: spider_qwen
+**1. spider_demo_train**
 
------------------------------------------------------------------------
+(1) modify start.sh:
 
-#### NExT-GPT: 
+mode="spider_demo_train"
 
-Beijing is the capital and largest city of China, and one of the most popular tourist destinations in the world. Here are some tips and tricks to help you make the most of your trip to Beijing:
+(2) related config:
 
-- Get a visa: Before you leave, make sure you have a Beijing visa, which is usually good for 3 months. You can apply for a visa online or at a Beijing consulate.
-- Get your accommodation lined up: Beijing has a wide range of accommodation options, from luxury hotels to budget-friendly options. You can book a hotel online or through a local agency.
-- Explore the food: Beijing is known for its delicious food, and there are plenty of places to try. From traditional Chinese cuisine to modern international dishes, there is something for everyone.
-- Take a day trip to the Great Wall of Beijing: The Great Wall of Beijing is one of the most famous landmarks in the world, and it's a must-see.
+train_configs/spider_demo_train.py
 
------------------------------------------------------------------------
+train_configs/ds_config.json (make sure the "train_batch_size" is adjusted correctly according to the GPU numbers)
 
-##### Discussion: 
+(3) Finally:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+sh start.sh
+```
 
-Spider generated a many-modal travel guide. But NExT-GPT only generated a textual travel guide.
 
+# Inference
+<a id="Inference"></a>
 
+## Inference Demo of Spider
+#### Spider
+docker in autodl: spider_qwen
 
-## Many-modal Travel Guide: Guangzhou
+Inference Pipeline: Spider/demo/inference_api.py
 
-#### User: 
+(1) select the checkpoint (train by train_configs/spider_demo_train.py), by modifying train_configs/demo_config.json:
 
-Please provide a travel guide for Guangzhou.
+"checkpoints": "path/to/checkpoint.pt"
 
-------------------------------------------------------------------------------------------
+(2) modify demo/frontend.py, "server_name" is the IP of the running machine:
 
-#### Spider: 
+demo.launch(share=True, enable_queue=True, server_port=8081, server_name='11.213.119.213')
 
-1. Introduction: Guangzhou, is a major city in southern China renowned for its vibrant trade, rich history, and culinary delights.
+demo.launch(share=True, server_port=6006) # autodl
 
-2. Attractions
+(3) gradio in autodl: https://blog.csdn.net/weixin_43976646/article/details/143723135
 
-- \<IMAGE\>Canton Tower[IMAGE0]\</IMAGE\>: The iconic structure offering panoramic views of the city.
+E:\jinxianglai\code\AutoDL-SSH-Tools\AutoDL.exe
 
-<p align="center">
-  <img src="doc/image/canton tower.png" width="50%"/></a>
-</p>
+(4) Corresponding setting in Spider/spider/models/spider.py.
+```bash
+# init Grounding DINO if needed
+init_dino_flag = True
+```
 
-- \<IMAGE\>Baiyun Mountain[IMAGE0]\</IMAGE\>: A natural escape with hiking trails and beautiful views of the city.
+(5) Finally:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+# mode="spider_demo_train", in demo.sh
+sh demo.sh
+```
 
-<p align="center">
-  <img src="doc/image/Baiyun Mountain.png" width="50%"/></a>
-</p>
+#### SpiderStory
+docker in autodl: spider_qwen
 
-3. Cultural Experiences
+Inference Pipeline: Spider/demo/inference_api.py
 
-- \<VIDEO\>Pearl River Cruise[VIDEO0]\</VIDEO\>: Enjoy a relaxing cruise and admire the illuminated skyline of Guangzhou.
+(1) select the checkpoint (train by train_configs/spider_story.py), by modifying train_configs/demo_config.json:
 
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/Pearl River Cruise.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
+"checkpoints": "path/to/checkpoint.pt"
 
-- \<AUDIO\>Guangzhou Opera House[AUDIO0]\</AUDIO\>: Watch an impressive opera performance in one of the most modern venues in China.
+(2) Finally:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+# mode="spider_story", in demo.sh
+sh demo.sh
+```
 
-<p align="center">
-  <audio controls>
-    <source src="doc/audio/Guangzhou Opera House.mp4" type="audio/mp4">
-    Your browser does not support the audio element.
-  </audio>
-</p>
+#### SpiderStory free (DeepSeek-R1-Distill-Llama-8B)
+<a id="Spider-Story-Free-Llama3"></a>
+docker in autodl: spider_qwen
 
-4. Guangzhou Food and Dining
+Inference Pipeline: Spider/demo/inference_api.py
 
-- \<IMAGE\>Dim Sum[IMAGE0]\</IMAGE\>: A must-try Cantonese tradition, with small dishes like dumplings, buns, and more.
+(1) Finally:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+# mode="spider_story_free_llama3", in demo.sh
+sh demo.sh
+```
 
-<p align="center">
-  <img src="doc/image/Dim Sum.png" width="50%"/></a>
-</p>
 
-- \<IMAGE\>Guangzhou Street Food[IMAGE0]\</IMAGE\>: Explore the food stalls offering roast goose, rice rolls, and congee.
+#### SpiderStory free (Qwen2.5-Omni)
+<a id="Spider-Story-Free-Qwen"></a>
+docker in autodl: spider_qwen
 
-<p align="center">
-  <img src="doc/image/Guangzhou Street Food.png" width="50%"/></a>
-</p>
+Inference Pipeline: Spider/qwen2.5omni_spider_web.py
 
-- Local Restaurants: Enjoy authentic Cantonese cuisine at renowned establishments throughout the city.
-  
-5. Guangzhou Shopping
+1. Chatbot in web:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+# MODEL_NAME="spider_story_free_qwen", in qwen2.5omni_spider_web.py
+python3 qwen2.5omni_spider_web.py
+```
 
-- Beijing Road: A lively pedestrian shopping street with a mix of modern and traditional stores.
+#### SpiderFree (Qwen2.5-Omni)
+<a id="SpiderFree-Qwen"></a>
+docker in autodl: spider_qwen
 
-- Shangxiajiu Pedestrian Street: Famous for its vibrant atmosphere and local fashion boutiques.
+Config: Spider/train_configs/spider_decoder_cfg.py
 
-6. Guangzhou Transportation
+Inference Pipeline: Spider/spider_decoder_infer.py
 
-- Metro: Guangzhou metro system is vast and convenient for traveling across the city.
+Gradio: Spider/qwen2.5omni_spider_web.py
 
-- Buses: An extensive bus network makes it easy to reach different parts of the city.
 
-7. Guangzhou Tips
+1. Chatbot in web:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+# MODEL_NAME="spider_free_qwen", in qwen2.5omni_spider_web.py
+python3 qwen2.5omni_spider_web.py
+```
 
-- Best Time to Visit: Autumn (October to December) is the best time to visit for pleasant weather.
 
-- Language: Cantonese and Mandarin are both widely spoken, though English may not be as common.
 
-- Currency: The local currency is the Chinese Yuan (CNY).
+## Inference Demo of DeepSeek-R1-Distill-Llama-8B
+docker in autodl: spider_qwen
 
-Explore the dynamic culture and culinary delights of Guangzhou!
+1. Text Chatbot in gradio:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+python3 r1_llama3_8B_gradio.py
+```
 
------------------------------------------------------------------------
+2. Text Chat in python:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+python3 r1_llama3_8B_chat.py
+```
 
-#### NExT-GPT: 
+3. Text generation in python:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+python3 r1_llama3_8B_infer.py
+```
 
-- Get ready to immerse yourself in the vibrant energy of Guangzhou, China's major city. This bustling metropolis is a harmonious blend of modernity and tradition, offering a diverse range of activities and experiences. Here's your essential travel guide to help you make the most of your time in this dynamic city.
 
-- Get ready to explore the rich history of this ancient city. The most popular tourist attractions in Guangzhou include the crisp air of the Fei metal smelting plant, the towering beauty of the Cividance grandeur, and the iconic beauty of the masterpiece of the essence of the city.
+## Inference Demo of StoryDiffusion
+docker in autodl: spider_qwen
 
-- For those who are interested in local culture, the best way to experience it is by visiting the bustling streets of the city. You can explore the bustling marketplaces, witness the traditional crafts of the region, and try some local delicacies.
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+python3 story_diffusion_infer.py
+```
 
------------------------------------------------------------------------
+## Inference Demo of SpiderDecoder
+docker in autodl: spider_qwen
 
-##### Discussion: 
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+python3 spider_decoder_infer.py
+```
 
-Spider generated a many-modal travel guide. But NExT-GPT only generated a textual travel guide.
 
+## Inference Demo of Qwen2.5-Omni
+docker in autodl: spider_qwen
 
-## Many-modal Travel Guide: Tokyo
+1. Chatbot in web:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+python3 qwen2.5omni_web.py
+```
 
-#### User: 
+2. Inference in python:
+```bash
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider
+python3 qwen2.5omni_infer.py
+```
 
-Please provide a travel guide for Tokyo.
 
-------------------------------------------------------------------------------------------
 
-#### Spider: 
+## Inference Demo of NextGPT
+docker in autodl: nextgpt
 
-1. Introduction: Tokyo, the capital of Japan, is a bustling metropolis that blends traditional culture with modern innovation.
+```bash
+conda activate nextgpt
 
-2. Attractions
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Opencodes-Multimodal/NExT-GPT/NExT-GPT-old-jinxiang/ckpt/pretrained_ckpt/imagebind_ckpt/huge
+ln -s /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/imagebind_huge.pth
 
-- \<IMAGE\>Tokyo Tower[IMAGE0]\</IMAGE\>: An iconic symbol of Tokyo with observation decks offering stunning views.
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Opencodes-Multimodal/NExT-GPT/NExT-GPT-old-jinxiang/ckpt/pretrained_ckpt/vicuna_ckpt
+ln -s /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/vicuna/7b_v0 7b_v0
 
-<p align="center">
-  <img src="doc/image/Tokyo Tower.png" width="50%"/></a>
-</p>
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Opencodes-Multimodal/NExT-GPT/NExT-GPT-old-jinxiang/ckpt/delta_ckpt/nextgpt
+rm -rf 7b_tiva_v0
+ln -s /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/nextgpt_7b_tiva_v0 7b_tiva_v0
 
-- \<IMAGE\>Shibuya Crossing[IMAGE0]\</IMAGE\>: One of the busiest pedestrian crossings in the world.
+cd /root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Opencodes-Multimodal/NExT-GPT/NExT-GPT-old-jinxiang/code
+bash scripts/app.sh
+```
 
-<p align="center">
-  <img src="doc/image/Shibuya Crossing.png" width="50%"/></a>
-</p>
+# Code
+## Code Structure
 
-- \<IMAGE\>Senso-ji Temple[IMAGE0]\</IMAGE\>: Tokyo's oldest temple, located in Asakusa.
+The code of the model is in spider/models/spider.py
 
-<p align="center">
-  <img src="doc/image/Senso-ji Temple.png" width="50%"/></a>
-</p>
+The inference code: Spider/demo/inference_api.py
 
-3. Cultural Experiences
 
-- \<VIDEO\>Sumo Wrestling[VIDEO0]\</VIDEO\>: Experience a traditional Japanese sport.
+## Code Base
+#### Code Base - Spider
+https://github.com/Vision-CAIR/MiniGPT-4
 
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/Sumo Wrestling.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
+https://github.com/NExT-GPT/NExT-GPT
 
-- \<VIDEO\>Tea Ceremony[VIDEO0]\</VIDEO\>: Participate in a traditional Japanese tea ceremony.
+https://github.com/microsoft/unilm/tree/master/kosmos-2
 
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/Tea Ceremony.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
+https://github.com/dvlab-research/LISA
 
-4. Tokyo Food and Dining
+https://github.com/QwenLM/Qwen2.5-Omni
 
-- \<IMAGE\>Sushi[IMAGE0]\</IMAGE\>: Enjoy world-famous sushi at local restaurants.
 
-<p align="center">
-  <img src="doc/image/Sushi.png" width="50%"/></a>
-</p>
+#### Code Base - Story
+https://github.com/HVision-NKU/StoryDiffusion
 
-- \<IMAGE\>Ramen[IMAGE0]\</IMAGE\>: A popular Japanese noodle soup available in various styles.
+https://github.com/xichenpan/ARLDM
 
-<p align="center">
-  <img src="doc/image/Ramen.png" width="50%"/></a>
-</p>
+https://github.com/TencentARC/SEED-Story
 
-- \<IMAGE\>Tempura[IMAGE0]\</IMAGE\>: Lightly battered and fried seafood or vegetables.
 
-<p align="center">
-  <img src="doc/image/Tempura.png" width="50%"/></a>
-</p>
+# Dataset
+## Dataset - Spider
+https://github.com/Vision-CAIR/MiniGPT-4
 
-5. Tokyo Shopping
+https://github.com/NExT-GPT/NExT-GPT
 
-- Ginza: A luxury shopping district with high-end brands.
+https://huggingface.co/datasets/sailvideo/webvid10m/tree/main
 
-- Harajuku: Known for its unique street fashion and shops.
+https://huggingface.co/datasets/Olivia714/audiocaps
 
-- Akihabara: A haven for electronics and anime culture.
+https://github.com/NExT-GPT/NExT-GPT/blob/main/data/T_X_pair_data/audiocap/prepare.md
 
-- Shinjuku: A bustling area with shops, restaurants, and entertainment.
 
-6. Tokyo Transportation
+## Dataset - Story
+https://github.com/xichenpan/ARLDM?tab=readme-ov-file
 
-- Subway: The Tokyo subway system is efficient and easy to navigate.
+https://github.com/TencentARC/SEED-Story
 
-- Buses: Public buses cover most areas of the city.
 
-- Taxis: Taxis are available but can be expensive.
 
-7. Tokyo Tips
 
-- Best Time to Visit: Spring (March to May) for cherry blossoms and Autumn (September to November) for pleasant weather.
+# Citation
+If you use this code for your research, please cite our paper:
+```bibtex
+@article{lai2024spider,
+  title={Spider: Any-to-Many Multimodal LLM},
+  author={Lai, Jinxiang and Zhang, Jie and Liu, Jun and Li, Jian and Lu, Xiaocheng and Guo, Song},
+  journal={arXiv preprint arXiv:2411.09439},
+  year={2024}
+}
+```
 
-- Language: Learning a few basic Japanese phrases can be helpful.
-
-- Currency: The local currency is the Japanese Yen (JPY).
-
-Enjoy your trip to Tokyo!
-
------------------------------------------------------------------------
-
-#### NExT-GPT: 
-
-Tokyo is a bustling city filled with history, culture, and excitement. Here are some tips and tricks to help you make the most of your trip to this vibrant and dynamic city.
-
-- Get a S created by your airline or travel insurance company. This will help you avoid any delays or cancellations, and also provide you with information about your flight, baggage, and other travel-related services.
-- Make sure you have enough time to see everything you want to see. Tokyo is a city that offers something for everyone, from history and culture to modern technology and entertainment. Make sure you plan your itinerary carefully, and don't forget to leave some time for relaxation and exploration.
-- Get a reputable guide book or app. There are many guide books available for Tokyo, and many of them are available in multiple languages. These can help you navigate the city, find the best places to eat, and learn about its history and culture.
-- Be prepared for the weather. Tokyo can be hot and humid, so make sure you have enough clothing to stay comfortable. 
-
------------------------------------------------------------------------
-
-##### Discussion: 
-
-Spider generated a many-modal travel guide. But NExT-GPT only generated a textual travel guide.
-
-
-## Text + Image → Text + Image
-
-#### User: 
-
-Show me an image that is similar to this image.
-
-<p align="center">
-  <img src="doc/image/mushroom.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-
-#### Spider:
-
-A mystical forest with glowing mushrooms and a hidden waterfall.
-\<IMAGE\> A mystical forest with glowing mushrooms and a hidden waterfall [IMAGE0] \</IMAGE\>
-
-<p align="center">
-  <img src="doc/image/A mystical forest with glowing mushrooms and a hidden waterfall.png" width="50%"/></a>
-</p>
-
-
------------------------------------------------------------------------
-
-#### NExT-GPT: 
-
-Certainly! Here's an image that captures the essence of the scene you described, with a group of mushrooms growing amidst a lush forest, creating a captivating and enchanting atmosphere.
-
-<p align="center">
-  <img src="doc/NextGPT/image/mushroom.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-
-##### Discussion: 
-
-<p align="center">
-  <img src="doc/image/compare.png" width="100%"/></a>
-</p>
-
-User prompt is "Show me an image that is similar to this image".
-Spider generated the image that is more similar to the input image, comparing to NExT-GPT.
-
-
-
-## Text + Image → Text + Image + Video
-
-#### User: 
-
-Generate an image and a video that are similar to this image.
-
-<p align="center">
-  <img src="doc/image/mountain.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-
-#### Spider:
-
-A snowy mountain with a blue sky.
-\<IMAGE\> A snowy mountain with a blue sky [IMAGE0] \</IMAGE\>
-
-<p align="center">
-  <img src="doc/image/A snowy mountain with a blue sky.png" width="50%"/></a>
-</p>
-
-\<VIDEO\> A snowy mountain with a blue sky [VIDEO0] \</VIDEO\>
-
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/A snowy mountain with a blue sky.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
-
-
------------------------------------------------------------------------
-
-#### NExT-GPT: 
-
-Certainly! I can help you with that. Here's an image that is quite similar to the one you described. It showcases a snowy mountain with a large, majestic peak in the distance. The snowy landscape creates a serene and picturesque scene. I'm sure you'll find it visually appealing.
-
-<p align="center">
-  <img src="doc/NextGPT/image/mountain.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-
-##### Discussion: 
-
-User prompt is "Generate an image and a video that are similar to this image."
-Spider generated an image and a video according to the user prompt. But NExT-GPT only generated an image, failed to generate the video.
-
-
-
-## Text → Text + Image + Video
-
-#### User: 
-
-Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room.
-
--------------------------------------------------------------------------
- 
-#### Spider:
-
-A cat chasing a ball of yarn in a living room.
-
-\<IMAGE\> A cat chasing a ball of yarn in a living room [IMAGE0] \</IMAGE\>
-
-<p align="center">
-  <img src="doc/image/A cat chasing a ball of yarn in a living room.png" width="50%"/></a>
-</p>
-
-\<VIDEO\> A cat chasing a ball of yarn in a living room [VIDEO0] \</VIDEO\>
-
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
-
------------------------------------------------------------------------
-
-#### NExT-GPT: 
-
-Certainly! I have just the video you're looking for. It captures the delightful moment of a cat p chasing a ball of yarn in a cozy living room. You'll be captivated by the cat's playful nature and the whimsical way it interacts with the colorful yarn.
-
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/NextGPT/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
-
------------------------------------------------------------------------
-
-##### Discussion: 
-
-User prompt is "Please generate an image and a video based on the following text: A cat chasing a ball of yarn in a living room."
-Spider generated an image and a video according to the user prompt. But NExT-GPT only generated a video, failed to generate the image.
-
-
-
-## Text + Image → Box + Image + Video
-
-#### User: 
-
-Detect tiger, and generate an image and a video for it
-
-<p align="center">
-  <img src="doc/image/tiger.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-#### Spider:
-
-\<BOX\> Tiger [BOX0] \</BOX\>
-
-<p align="center">
-  <img src="doc/image/tiger_box.png" width="50%"/></a>
-</p>
-
-\<IMAGE\> Tiger [IMAGE0] \</IMAGE\>
-
-<p align="center">
-  <img src="doc/image/tiger_gen.png" width="50%"/></a>
-</p>
-
-\<VIDEO\> Tiger [VIDEO0] \</VIDEO\>
-
-<p align="center">
-  <video width="50%" controls>
-    <source src="doc/video/tiger.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
-
------------------------------------------------------------------------
-
-#### NExT-GPT: 
-
-Sure! Here's an image of a majestic tiger standing proudly, showcasing its powerful presence. You can also find a video of a tiger in action, as well as a box. Enjoy!
-
-<p align="center">
-  <img src="doc/NextGPT/image/tiger.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-
-##### Discussion: 
-
-User prompt is "Detect tiger, and generate an image and a video for it".
-Spider detected the tiger in the input image, and generated an image and a video according to the user prompt. But NExT-GPT only generated an image, failed to generate the video and detect the tiger in the input image.
-
-
-
-## Text + Image → Mask + Image
-
-#### User: 
-
-Give me the mask of panda, and generate an image for it
-
-<p align="center">
-  <img src="doc/image/panda.png" width="50%"/></a>
-</p>
-
---------------------------------------------------------------------------------   
-
-#### Spider: 
-
-\<MASK\> Panda [MASK0] \</MASK\>
-
-<p align="center">
-  <img src="doc/image/panda_mask.png" width="50%"/></a>
-</p>
-
-\<IMAGE\> Panda [IMAGE0] \</IMAGE\>
-
-<p align="center">
-  <img src="doc/image/panda_gen.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-
-#### NExT-GPT: 
-
-Certainly! I can provide you with an image that captures the essence of the panda in this scene. It's a delightful image of a black and white tiger bear, standing gracefully on a grassy hillside. The bear's black and white fur contrasts beautifully against the green grass, creating a striking visual. The panda appears to be peacefully strolling through the grass, enjoying its surroundings. It's a serene and captivating sight!
-
-<p align="center">
-  <img src="doc/NextGPT/image/panda.png" width="50%"/></a>
-</p>
-
------------------------------------------------------------------------
-
-##### Discussion: 
-
-User prompt is "Give me the mask of panda, and generate an image for it".
-Spider generated the mask for the panda in the input image, and generated an image according to the user prompt. But NExT-GPT only generated an image, failed to generate the mask for the panda in the input image.
-
+# Contact
+Jinxiang Lai: layjins1994@gmail.com
