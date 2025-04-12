@@ -37,6 +37,8 @@ MODEL_NAME = "spider_free_qwen"
 # MODEL_NAME = "spider_story_free_qwen"
 DEFAULT_CKPT_PATH = "/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/Qwen2.5-Omni-7B"
 # SYSTEM_PROMPT
+USER_PROMPT = ""
+ASSISTANT_PROMPT = ""
 if MODEL_NAME == "spider_free_qwen":
     cfg_root = "/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider/train_configs"
     cfg_path = os.path.join(cfg_root, "spider_decoder_cfg.py")
@@ -63,6 +65,8 @@ if MODEL_NAME == "spider_free_qwen":
         SYSTEM_PROMPT = SYSTEM_PROMPT + cfg.model.system_prompt_box
     if cfg.model.story_generation != None:
         SYSTEM_PROMPT = SYSTEM_PROMPT + cfg.model.system_prompt_story
+    USER_PROMPT = cfg.model.user_prompt
+    ASSISTANT_PROMPT = cfg.model.assistant_prompt
 elif MODEL_NAME == "spider_story_free_qwen":
     from StoryDiffusion.Comic_Generation import init_story_generation, story_generation
     story_diffusion = init_story_generation(model_name="Unstable", device="cuda")
@@ -81,7 +85,7 @@ elif MODEL_NAME == "spider_story_free_qwen":
     "- **Example Output Format** is the example. The specific content should generate according to the user demand." \
     "Now, generate a structured story description in this format. And carefully recheck the formats of <GENERALPROMPT>, <PROMPTARRAY>, <STYLENAME>."
 else:
-    SYSTEM_PROMPT = 'You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs. Only generates text, no audio output.'
+    SYSTEM_PROMPT = 'You are Qwen, a virtual human developed by the Qwen Team, Alibaba Group, capable of perceiving auditory and visual inputs, as well as generating text and speech.'
 
 def _get_args():
     parser = ArgumentParser()
@@ -412,6 +416,8 @@ def _launch_demo(args, model, processor):
     def format_history(history: list, system_prompt: str):
         messages = []
         messages.append({"role": "system", "content": system_prompt})
+        messages.append({"role": "user", "content": USER_PROMPT})
+        messages.append({"role": "assistant", "content": ASSISTANT_PROMPT})
         for item in history:
             if isinstance(item["content"], str):
                 messages.append({"role": item['role'], "content": item['content']})

@@ -33,30 +33,32 @@ class SpiderDecoder(BaseModel):
     def __init__(self,
                 name="spider_decoder",
                 system_prompt='You are Spider, an AI assistant that can understand and generate many modalities.',
+                user_prompt='',
+                assistant_prompt='',
                 get_prompt_embed_for_diffusion=False, # If True: get prompt embedding for diffusion
                 diffusion_modules=dict(
                     IMAGE=dict(type="sd", ckpt='/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/stable-diffusion-v1-5'),
                     VIDEO=dict(type="vd", ckpt='/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/zeroscope_v2_576w'),
                     AUDIO=dict(type="ad", ckpt='/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/audioldm-l-full'),
                 ),
-                system_prompt_image='You are Spider, an AI assistant that can understand and generate many modalities.',
-                system_prompt_video='You are Spider, an AI assistant that can understand and generate many modalities.',
-                system_prompt_audio='You are Spider, an AI assistant that can understand and generate many modalities.',
+                system_prompt_image='',
+                system_prompt_video='',
+                system_prompt_audio='',
                 mask_decoder_modules=dict(
                     sam_path="/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/sam_vit_h_4b8939.pth",
                     freeze_mask_decoder=True,
                 ),
-                system_prompt_mask='You are Spider, an AI assistant that can understand and generate many modalities.',
+                system_prompt_mask='',
                 box_decoder_modules=dict(
                     # grounding DINO
                     config_file='/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/myGPT/Spider/spider/models/mmdetection/configs/mm_grounding_dino/grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det.py',
                     checkpoint_file='/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det_20231204_095047-b448804b.pth',
                 ),
-                system_prompt_box='You are Spider, an AI assistant that can understand and generate many modalities.',
+                system_prompt_box='',
                 story_generation=dict(
                     model_name="Unstable",
                 ),
-                system_prompt_story='You are Spider, an AI assistant that can understand and generate many modalities.',
+                system_prompt_story='',
                 max_context_len=4096,
                 ):
         super().__init__()

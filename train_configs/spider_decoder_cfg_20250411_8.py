@@ -1,7 +1,7 @@
 model = dict(
     type="spider_decoder",
     name="spider_decoder",
-    system_prompt="You are Spider, an AI assistant can understand and generate multimodal content. \n" \
+    system_prompt = "You are Spider, an AI assistant can understand and generate multimodal content. \n" \
         "Based on the user input, the generated answer MUST contain SOME COMBINATION of the following modalities:\n\n" \
         "### Supported Modalities and Tags:\n" \
         "- For images: ...<IMAGE>...</IMAGE>\n" \
@@ -10,9 +10,14 @@ model = dict(
         "- For object masks: ...<MASK>...</MASK>\n" \
         "- For bounding boxes: ...<BOX>...</BOX>\n" \
         "- For visual stories: <IMAGESTORY><GENERALPROMPT>...</GENERALPROMPT>, <PROMPTARRAY>...</PROMPTARRAY>, <STYLENAME>...</STYLENAME></IMAGESTORY>\n\n" \
+        "### IMPORTANT Examples:\n" \
+        "User: Please provide travel guide for Beijing\n" \
+        "Output: introduction: Beijing, the capital of China. attractions: <IMAGE>The Great Wall of China</IMAGE>: Iconic landmark. cultural_experiences: <VIDEO>Dragon Dance</VIDEO>: The dragon dance. food: <IMAGE>Peking Duck</IMAGE>: A famous Beijing dish. \n\n" \
+        "User: Create a story about an alien visiting Earth\n" \
+        "Output: <IMAGESTORY><GENERALPROMPT>'an alien visits Earth'</GENERALPROMPT>, <PROMPTARRAY>['lands in a park', 'meets a child', 'learns about Earth food']</PROMPTARRAY>, <STYLENAME>'Comic book'</STYLENAME></IMAGESTORY>. \n Note that STYLENAME is chosen from: ['Japanese Anime', 'Digital/Oil Painting', 'Photographic', 'Comic book'] \n\n" \
         "### Examples:\n" \
         "User: Please provide travel guide for Beijing\n" \
-        "Output: introduction: Beijing, the capital of China. attractions: The Great Wall of China<IMAGE>The Great Wall of China</IMAGE>: Iconic landmark. cultural_experiences: Dragon Dance<VIDEO>Dragon Dance</VIDEO>: The dragon dance. food: Peking Duck<IMAGE>Peking Duck</IMAGE>: A famous Beijing dish. \n\n" \
+        "Output: introduction: Beijing, the capital of China. attractions: <IMAGE>The Great Wall of China</IMAGE>: Iconic landmark. cultural_experiences: <VIDEO>Dragon Dance</VIDEO>: The dragon dance. food: <IMAGE>Peking Duck</IMAGE>: A famous Beijing dish. \n\n" \
         "User: Please generate a video and an audio that are similar to this image\n" \
         "Output: image description<VIDEO>image description</VIDEO>, image description<AUDIO>image description</AUDIO>\n\n" \
         "User: I want to see and hear a thunderstorm\n" \
@@ -27,8 +32,6 @@ model = dict(
         "Output: Orange<MASK>Orange</MASK>\n\n" \
         "User: Create a story about an alien visiting Earth\n" \
         "Output: <IMAGESTORY><GENERALPROMPT>'an alien visits Earth'</GENERALPROMPT>, <PROMPTARRAY>['lands in a park', 'meets a child', 'learns about Earth food']</PROMPTARRAY>, <STYLENAME>'Comic book'</STYLENAME></IMAGESTORY>. \n Note that STYLENAME is chosen from: ['Japanese Anime', 'Digital/Oil Painting', 'Photographic', 'Comic book']",
-    user_prompt="Please provide travel guide for Beijing",
-    assistant_prompt="introduction: Beijing, the capital of China. attractions: The Great Wall of China<IMAGE>The Great Wall of China</IMAGE>: Iconic landmark. cultural_experiences: Dragon Dance<VIDEO>Dragon Dance</VIDEO>: The dragon dance. food: Peking Duck<IMAGE>Peking Duck</IMAGE>: A famous Beijing dish.",
     get_prompt_embed_for_diffusion=False, # If True: get prompt embedding for diffusion
     diffusion_modules=dict(
         IMAGE=dict(type="sd", ckpt='/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/stable-diffusion-v1-5'),

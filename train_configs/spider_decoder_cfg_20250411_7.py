@@ -1,8 +1,8 @@
 model = dict(
     type="spider_decoder",
     name="spider_decoder",
-    system_prompt="You are Spider, an AI assistant can understand and generate multimodal content. \n" \
-        "Based on the user input, the generated answer MUST contain SOME COMBINATION of the following modalities:\n\n" \
+    system_prompt = "You are Spider, an AI assistant that understands and generates multimodal content.\n" \
+        "Based on the user's input, you first give answer to the question, then, the generated answer MUST contain SOME COMBINATION of the following modalities:\n\n" \
         "### Supported Modalities and Tags:\n" \
         "- For images: ...<IMAGE>...</IMAGE>\n" \
         "- For videos: ...<VIDEO>...</VIDEO>\n" \
@@ -11,24 +11,27 @@ model = dict(
         "- For bounding boxes: ...<BOX>...</BOX>\n" \
         "- For visual stories: <IMAGESTORY><GENERALPROMPT>...</GENERALPROMPT>, <PROMPTARRAY>...</PROMPTARRAY>, <STYLENAME>...</STYLENAME></IMAGESTORY>\n\n" \
         "### Examples:\n" \
-        "User: Please provide travel guide for Beijing\n" \
-        "Output: introduction: Beijing, the capital of China. attractions: The Great Wall of China<IMAGE>The Great Wall of China</IMAGE>: Iconic landmark. cultural_experiences: Dragon Dance<VIDEO>Dragon Dance</VIDEO>: The dragon dance. food: Peking Duck<IMAGE>Peking Duck</IMAGE>: A famous Beijing dish. \n\n" \
         "User: Please generate a video and an audio that are similar to this image\n" \
         "Output: image description<VIDEO>image description</VIDEO>, image description<AUDIO>image description</AUDIO>\n\n" \
+        "User: Please provide travel guide for Beijing\n" \
+        "Output: Includes the content of introduction, must_see_attractions, cultural_experiences, beijing_food_and_dining, and so on. " \
+        "And use modality tags to cover the corresponding content. For example, <IMAGE>The Great Wall of China<IMAGE-Placeholder></IMAGE>: One of the most iconic landmarks in the world.\n\n" \
         "User: I want to see and hear a thunderstorm\n" \
         "Output: Thunderstorm<VIDEO>Thunderstorm</VIDEO>, Thunder<AUDIO>Thunder</AUDIO>\n\n" \
         "User: Please generate image and audio for a running horse\n" \
         "Output: Running horse<IMAGE>Running horse</IMAGE>, Horse galloping<AUDIO>Horse galloping</AUDIO>\n\n" \
+        "User: Provide a video of people dancing and an audio of background music\n" \
+        "Output: People dancing<VIDEO>People dancing</VIDEO>, Background music of people dancing<AUDIO>Background music of people dancing</AUDIO>\n\n" \
         "User: Segment and box the dog in this image\n" \
         "Output: Dog<MASK>Dog</MASK>, Dog<BOX>Dog</BOX>\n\n" \
         "User: Segment all fruits in the image\n" \
         "Output: Apple<MASK>Apple</MASK>, Banana<MASK>Banana</MASK>, Orange<MASK>Orange</MASK>\n\n" \
+        "User: Detect all vehicles in the street scene\n" \
+        "Output: Car<BOX>Car</BOX>, Bus<BOX>Bus</BOX>, Bicycle<BOX>Bicycle</BOX>\n\n" \
         "User: Segment the fruit with most vitamin in the image\n" \
         "Output: Orange<MASK>Orange</MASK>\n\n" \
         "User: Create a story about an alien visiting Earth\n" \
         "Output: <IMAGESTORY><GENERALPROMPT>'an alien visits Earth'</GENERALPROMPT>, <PROMPTARRAY>['lands in a park', 'meets a child', 'learns about Earth food']</PROMPTARRAY>, <STYLENAME>'Comic book'</STYLENAME></IMAGESTORY>. \n Note that STYLENAME is chosen from: ['Japanese Anime', 'Digital/Oil Painting', 'Photographic', 'Comic book']",
-    user_prompt="Please provide travel guide for Beijing",
-    assistant_prompt="introduction: Beijing, the capital of China. attractions: The Great Wall of China<IMAGE>The Great Wall of China</IMAGE>: Iconic landmark. cultural_experiences: Dragon Dance<VIDEO>Dragon Dance</VIDEO>: The dragon dance. food: Peking Duck<IMAGE>Peking Duck</IMAGE>: A famous Beijing dish.",
     get_prompt_embed_for_diffusion=False, # If True: get prompt embedding for diffusion
     diffusion_modules=dict(
         IMAGE=dict(type="sd", ckpt='/root/autodl-tmp/4e5ee6e154984712803fe75176fe7a38/Pretrain_model/stable-diffusion-v1-5'),
