@@ -8,13 +8,13 @@ The [Inference](#inference) section provides various inference demos for multimo
 
 ### SpiderFree Visualization
 
-Many-Modal Travel Guide: https://github.com/user-attachments/assets/0a7d4520-aff5-4225-9c10-c6019cedceb6
+https://github.com/user-attachments/assets/0a7d4520-aff5-4225-9c10-c6019cedceb6
 
-Many-Modal Generation: https://github.com/user-attachments/assets/114d10ff-bc8b-40d9-af2a-631e930d0e63
+https://github.com/user-attachments/assets/114d10ff-bc8b-40d9-af2a-631e930d0e63
 
-Story Generation: https://github.com/user-attachments/assets/da7273e5-2e79-4626-9a64-9e3a30af4e4a
+https://github.com/user-attachments/assets/da7273e5-2e79-4626-9a64-9e3a30af4e4a
 
-Segmentation: https://github.com/user-attachments/assets/1aeffea1-48e6-4cba-9526-a7700947920f
+https://github.com/user-attachments/assets/1aeffea1-48e6-4cba-9526-a7700947920f
 
 ### Supported Features
 ✅ Gradio web interfaces  
