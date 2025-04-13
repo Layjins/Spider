@@ -1,12 +1,13 @@
 # SpiderFree Visualization
 
-Many-Modal Travel Guide: https://github.com/user-attachments/assets/0a7d4520-aff5-4225-9c10-c6019cedceb6
+https://github.com/user-attachments/assets/0a7d4520-aff5-4225-9c10-c6019cedceb6
 
-Many-Modal Generation: https://github.com/user-attachments/assets/114d10ff-bc8b-40d9-af2a-631e930d0e63
+https://github.com/user-attachments/assets/114d10ff-bc8b-40d9-af2a-631e930d0e63
 
-Story Generation: https://github.com/user-attachments/assets/da7273e5-2e79-4626-9a64-9e3a30af4e4a
+https://github.com/user-attachments/assets/da7273e5-2e79-4626-9a64-9e3a30af4e4a
 
-Segmentation: https://github.com/user-attachments/assets/1aeffea1-48e6-4cba-9526-a7700947920f
+https://github.com/user-attachments/assets/1aeffea1-48e6-4cba-9526-a7700947920f
+
 
 
 # Spider Visualization
@@ -40,6 +41,8 @@ Please provide me a travel guide for Beijing.
 3. Cultures
 
 - \<VIDEO\> Dragon Dance [VIDEO0] \</VIDEO\>: The dragon dance is performed by a team of dancers who manipulate a long flexible dragon puppet using poles.
+
+https://github.com/user-attachments/assets/b90bd7d7-861d-498e-8715-897542291cbd
 
 <p align="center">
   <video width="50%" controls>
@@ -105,6 +108,8 @@ Please provide a travel guide for Guangzhou.
 3. Cultural Experiences
 
 - \<VIDEO\>Pearl River Cruise[VIDEO0]\</VIDEO\>: Enjoy a relaxing cruise and admire the illuminated skyline of Guangzhou.
+
+https://github.com/user-attachments/assets/9ea1f7b7-a8e1-4fcc-99f6-e9c3f8d76315
 
 <p align="center">
   <video width="50%" controls>
@@ -213,6 +218,8 @@ Please provide a travel guide for Tokyo.
 
 - \<VIDEO\>Sumo Wrestling[VIDEO0]\</VIDEO\>: Experience a traditional Japanese sport.
 
+https://github.com/user-attachments/assets/483529d3-2308-402a-b812-0d65e19bbc30
+
 <p align="center">
   <video width="50%" controls>
     <source src="doc/video/Sumo Wrestling.mp4" type="video/mp4">
@@ -222,6 +229,8 @@ Please provide a travel guide for Tokyo.
 
 - \<VIDEO\>Tea Ceremony[VIDEO0]\</VIDEO\>: Participate in a traditional Japanese tea ceremony.
 
+https://github.com/user-attachments/assets/5fca2c6c-18af-42df-8d57-5af47b04c5a9
+
 <p align="center">
   <video width="50%" controls>
     <source src="doc/video/Tea Ceremony.mp4" type="video/mp4">
@@ -229,7 +238,7 @@ Please provide a travel guide for Tokyo.
   </video>
 </p>
 
-4. Tokyo Food and Dining
+1. Tokyo Food and Dining
 
 - \<IMAGE\>Sushi[IMAGE0]\</IMAGE\>: Enjoy world-famous sushi at local restaurants.
 
@@ -363,6 +372,8 @@ A snowy mountain with a blue sky.
 
 \<VIDEO\> A snowy mountain with a blue sky [VIDEO0] \</VIDEO\>
 
+https://github.com/user-attachments/assets/c33146cd-a8ee-4afd-aa84-9986b1711ade
+
 <p align="center">
   <video width="50%" controls>
     <source src="doc/video/A snowy mountain with a blue sky.mp4" type="video/mp4">
@@ -410,6 +421,8 @@ A cat chasing a ball of yarn in a living room.
 
 \<VIDEO\> A cat chasing a ball of yarn in a living room [VIDEO0] \</VIDEO\>
 
+https://github.com/user-attachments/assets/74af91f9-01ad-4eca-a071-f3aeaf9d95d6
+
 <p align="center">
   <video width="50%" controls>
     <source src="doc/video/A cat chasing a ball of yarn in a living room.mp4" type="video/mp4">
@@ -422,6 +435,8 @@ A cat chasing a ball of yarn in a living room.
 #### NExT-GPT: 
 
 Certainly! I have just the video you're looking for. It captures the delightful moment of a cat p chasing a ball of yarn in a cozy living room. You'll be captivated by the cat's playful nature and the whimsical way it interacts with the colorful yarn.
+
+https://github.com/user-attachments/assets/339bbb99-1b57-44aa-ba9a-6d3783181fd5
 
 <p align="center">
   <video width="50%" controls>
@@ -465,6 +480,8 @@ Detect tiger, and generate an image and a video for it
 </p>
 
 \<VIDEO\> Tiger [VIDEO0] \</VIDEO\>
+
+https://github.com/user-attachments/assets/c411f5ca-b5b8-4425-8f1c-4a4a36fd271d
 
 <p align="center">
   <video width="50%" controls>
