@@ -6,6 +6,16 @@ The [Inference](#inference) section provides various inference demos for multimo
 - **Specialized Story Generation**: Convert multimodal inputs into coherent text-image story  
 - **Model Variants**: Implementations using both Qwen2.5-Omni and DeepSeek-Llama architectures
 
+### SpiderFree Visualization
+
+Many-Modal Travel Guide: https://github.com/user-attachments/assets/0a7d4520-aff5-4225-9c10-c6019cedceb6
+
+Many-Modal Generation: https://github.com/user-attachments/assets/114d10ff-bc8b-40d9-af2a-631e930d0e63
+
+Story Generation: https://github.com/user-attachments/assets/da7273e5-2e79-4626-9a64-9e3a30af4e4a
+
+Segmentation: https://github.com/user-attachments/assets/1aeffea1-48e6-4cba-9526-a7700947920f
+
 ### Supported Features
 ✅ Gradio web interfaces  
 ✅ Python API calls  
@@ -32,9 +42,12 @@ Spider: Any-to-Many Multimodal LLM: https://arxiv.org/pdf/2411.09439
 Multimodal LLMs (MLLMs) have emerged as an extension of Large Language Models (LLMs), enabling the integration of various modalities. However, Any-to-Any MLLMs are limited to generating pairwise modalities 'Text + X' within a single response, such as Text + {Image or Audio or Video}. To address this limitation, we introduce Spider, a novel efficient Any-to-Many Modalities Generation (AMMG) framework, which can generate an arbitrary combination of modalities 'Text + Xs', such as Text + {Image and Audio and Video}. To achieve efficient AMMG, our Spider integrates three core components: a Base Model for basic X-to-X (i.e., Any-to-Any) modality processing, a novel Efficient Decoders-Controller for controlling multimodal Decoders to generate Xs (many-modal) contents, and an Any-to-Many Instruction Template designed for producing Xs signal prompts. To train Spider, we constructed a novel Text-formatted Many-Modal (TMM) dataset, which facilitates the learning of the X-to-Xs (i.e., Any-to-Many) capability necessary for AMMG. Ultimately, the well-trained Spider generates a pseudo X-to-Xs dataset, the first-ever X-to-Xs many-modal dataset, enhancing the potential for AMMG task in future research. Overall, this work not only pushes the boundary of multimodal interaction but also provides rich data support for advancing the field.
 
 
+
+
 # Table of Contents
 
 - [Highlight](#highlight)
+    - [SpiderFree Visualization](#spiderfree-visualization)
     - [Supported Features](#supported-features)
     - [Our Paper](#our-paper)
 - [Table of Contents](#table-of-contents)

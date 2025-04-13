@@ -1,14 +1,12 @@
 # SpiderFree Visualization
 
-https://github.com/Layjins/Spider/blob/main/doc/spider.mp4
+Many-Modal Travel Guide: https://github.com/user-attachments/assets/0a7d4520-aff5-4225-9c10-c6019cedceb6
 
-<p align="center">
-  <video width="100%" controls>
-    <source src="doc/spider.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</p>
+Many-Modal Generation: https://github.com/user-attachments/assets/114d10ff-bc8b-40d9-af2a-631e930d0e63
 
+Story Generation: https://github.com/user-attachments/assets/da7273e5-2e79-4626-9a64-9e3a30af4e4a
+
+Segmentation: https://github.com/user-attachments/assets/1aeffea1-48e6-4cba-9526-a7700947920f
 
 
 # Spider Visualization
