@@ -53,6 +53,8 @@ https://github.com/user-attachments/assets/b90bd7d7-861d-498e-8715-897542291cbd
 
 - \<AUDIO\> Peking Opera [AUDIO0] \</AUDIO\>:  Enjoy a traditional Chinese opera performance.
 
+https://github.com/user-attachments/assets/5912300c-fe00-47aa-92d7-2712ea441c20
+
 <p align="center">
   <audio controls>
     <source src="doc/audio/Peking Opera.mp4" type="audio/mp4">
@@ -119,6 +121,8 @@ https://github.com/user-attachments/assets/9ea1f7b7-a8e1-4fcc-99f6-e9c3f8d76315
 </p>
 
 - \<AUDIO\>Guangzhou Opera House[AUDIO0]\</AUDIO\>: Watch an impressive opera performance in one of the most modern venues in China.
+
+https://github.com/user-attachments/assets/73a2e6a2-b5e0-459e-aac5-0f88784c8d54
 
 <p align="center">
   <audio controls>
