@@ -921,6 +921,21 @@ def _launch_demo(args, model, processor):
             with gr.Tab("Offline"):
                 chatbot = gr.Chatbot(type="messages", height=650)
 
+                # Text input section
+                text_input = gr.Textbox(show_label=False,
+                                        placeholder="Enter text here...")
+
+                # Control buttons
+                with gr.Row():
+                    submit_btn = gr.Button(get_text("Submit", "提交"),
+                                        variant="primary",
+                                        size="lg")
+                    stop_btn = gr.Button(get_text("Stop", "停止"),
+                                        visible=False,
+                                        size="lg")
+                    clear_btn = gr.Button(get_text("Clear History", "清除历史"),
+                                        size="lg")
+
                 # Media upload section in one row
                 with gr.Row(equal_height=True):
                     audio_input = gr.Audio(sources=["upload"],
@@ -937,21 +952,6 @@ def _launch_demo(args, model, processor):
                                         label="Upload Video",
                                         elem_classes="media-upload",
                                         scale=1)
-
-                # Text input section
-                text_input = gr.Textbox(show_label=False,
-                                        placeholder="Enter text here...")
-
-                # Control buttons
-                with gr.Row():
-                    submit_btn = gr.Button(get_text("Submit", "提交"),
-                                        variant="primary",
-                                        size="lg")
-                    stop_btn = gr.Button(get_text("Stop", "停止"),
-                                        visible=False,
-                                        size="lg")
-                    clear_btn = gr.Button(get_text("Clear History", "清除历史"),
-                                        size="lg")
 
                 def clear_chat_history():
                     return [], gr.update(value=None), gr.update(
