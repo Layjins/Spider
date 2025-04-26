@@ -59,7 +59,7 @@ class SpatialAttnProcessor2_0(torch.nn.Module):
     # __call1__: Consistent Self-Attention
     # __call2__: Standard Attention
 
-    def __init__(self, hidden_size = None, cross_attention_dim=None,id_length = 3,device = "cuda",dtype = torch.float16):
+    def __init__(self, hidden_size = None, cross_attention_dim=None,id_length = 4,device = "cuda",dtype = torch.float16):
         super().__init__()
         if not hasattr(F, "scaled_dot_product_attention"):
             raise ImportError("AttnProcessor2_0 requires PyTorch 2.0, to use it, please upgrade PyTorch to 2.0.")
@@ -331,7 +331,7 @@ def story_generation(pipe, general_prompt=None, prompt_array=None, style_name=No
     attn_count = 0
     total_count = 0
     cur_step = 0
-    id_length = 3
+    id_length = 4
     total_length = 5
     cur_model_type = ""
     device="cuda"
@@ -343,10 +343,10 @@ def story_generation(pipe, general_prompt=None, prompt_array=None, style_name=No
     sa32 = 0.5
     sa64 = 0.5
     ### Res. of the Generated Comics. Please Note: SDXL models may do worse in a low-resolution! 
-    # height = 768
-    # width = 768
-    height = 384
-    width = 384
+    height = 768
+    width = 768
+    # height = 384
+    # width = 384
     unet = pipe.unet
 
     ### Insert PairedAttention ###
@@ -387,7 +387,7 @@ def story_generation(pipe, general_prompt=None, prompt_array=None, style_name=No
     seed = 2047
     sa32 = 0.5
     sa64 = 0.5
-    id_length = 3
+    id_length = 4
     num_steps = 50
     if general_prompt == None:
         general_prompt = "a man with a black suit"
